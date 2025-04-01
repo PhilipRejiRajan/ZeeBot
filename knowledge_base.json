@@ -2,55 +2,15 @@
   "questions": [
     {
       "question": "hi there",
-      "answer": "Yo wassup gang?"
-    },
-    {
-      "question": "im fine you?",
-      "answer": "we good"
-    },
-    {
-      "question": "great",
-      "answer": "uh-huh"
+      "answer": "Hi! I am ZeeBot, a simple chabot assistant. How may I assist you today?"
     },
     {
       "question": "hello there",
-      "answer": "wassgud?"
+      "answer": "Hello! I am ZeeBot, a simple chabot assistant. How may I assist you today?"
     },
     {
-      "question": "doing good",
-      "answer": "SLAYY!!!"
-    },
-    {
-      "question": "hi",
-      "answer": "yo wassup?"
-    },
-    {
-      "question": "what is your name?",
-      "answer": "call me ZeeBot"
-    },
-    {
-      "question": "okay",
-      "answer": "yup"
-    },
-    {
-      "question": "no what are you like specifically?",
-      "answer": "im an AI chatbot bruh"
-    },
-    {
-      "question": "cool",
-      "answer": "we cool"
-    },
-    {
-      "question": "are you able to create anything",
-      "answer": "nope im dumb"
-    },
-    {
-      "question": "skibidi",
-      "answer": "toilet"
-    },
-    {
-      "question": "ts pmo",
-      "answer": "sybau fr"
+      "question": "greetings",
+      "answer": "Greetings! I am ZeeBot, a simple chabot assistant. How may I assist you today?"
     }
   ]
 }
