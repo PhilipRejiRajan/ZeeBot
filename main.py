@@ -1,4 +1,6 @@
 import json
+import tkinter as tk
+from tkinter import scrolledtext, simpledialog
 from difflib import get_close_matches
 
 def load_knowledge_base(file_path: str) -> dict:
@@ -19,29 +21,42 @@ def get_answer_for_question(question: str, knowledge_base: dict) -> str | None:
         if q["question"] == question:
             return q["answer"]
 
-def zeebot():
-    knowledge_base: dict = load_knowledge_base("knowledge_base.json")
+def send_message():
+    user_input = user_entry.get().strip()
+    if not user_input:
+        return
 
-    while True:
-        user_input: str = input('You: ')
+    chat_display.insert(tk.END, f"You: {user_input}\n")
+    user_entry.delete(0, tk.END)
 
-        if user_input.lower() == 'exit':
-            break
-        
-        best_match: str | None = find_best_match(user_input, [q["question"] for q in knowledge_base["questions"]])
+    best_match: str | None = find_best_match(user_input, [q["question"] for q in knowledge_base["questions"]])
 
-        if best_match:
-            answer: str = get_answer_for_question(best_match, knowledge_base)
-            print(f'ZeeBot: {answer}')
-        else:
-            print('ZeeBot: I don\'t know the answer. Can you teach me?')
-            new_answer: str = input('Type the answer or "exit" to exit: ')
+    if best_match:
+        answer: str = get_answer_for_question(best_match, knowledge_base)
+        chat_display.insert(tk.END, f"ZeeBot: {answer}\n")
+    else:
+        chat_display.insert(tk.END, "ZeeBot: I don't know the answer. Can you teach me?\n")
+        new_answer = tk.simpledialog.askstring("Teach ZeeBot","Type the answer or press Cancel to skip:")
 
-            if new_answer.lower() != 'exit':
-                knowledge_base["questions"].append({"question": user_input, "answer": new_answer})
-                save_knowledge_base('knowledge_base.json', knowledge_base)
-                print('ZeeBot: Thank you! I learnt a new response!')
+        if new_answer:
+            knowledge_base["questions"].append({"question": user_input, "answer": new_answer})
+            save_knowledge_base('knowledge_base.json', knowledge_base)
+            chat_display.insert(tk.END, "ZeeBot: Thank you! I learned a new response!\n")
 
 
-if __name__ == '__main__':
-    zeebot()
+knowledge_base: dict = load_knowledge_base("knowledge_base.json")
+
+root = tk.Tk()
+root.title("ZeeBot")
+root.geometry("500x500")
+
+chat_display = scrolledtext.ScrolledText(root, wrap=tk.WORD, width=60, height=20)
+chat_display.pack(pady=30)
+
+user_entry = tk.Entry(root, width=50)
+user_entry.pack(pady=10)
+
+send_button = tk.Button(root, text="Send", command=send_message)
+send_button.pack(pady=5)
+
+root.mainloop()
