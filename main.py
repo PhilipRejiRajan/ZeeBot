@@ -1,5 +1,6 @@
 import json
 import tkinter as tk
+import tkinter.font as tkfont
 from tkinter import scrolledtext, simpledialog
 from difflib import get_close_matches
 
@@ -48,15 +49,26 @@ knowledge_base: dict = load_knowledge_base("knowledge_base.json")
 
 root = tk.Tk()
 root.title("ZeeBot")
-root.geometry("500x500")
+root.geometry("1000x700")
+root.configure(bg="#1F1F1F")
+
+custom_font1 = tkfont.Font(family="Cascadia Mono", size=14, weight="bold")
 
 chat_display = scrolledtext.ScrolledText(root, wrap=tk.WORD, width=60, height=20)
 chat_display.pack(pady=30)
+chat_display.configure(font=custom_font1)
+chat_display.configure(bg="#0C0C0C", fg="#1EF113")
 
 user_entry = tk.Entry(root, width=50)
 user_entry.pack(pady=10)
+user_entry.configure(font=custom_font1)
+user_entry.configure(bg="#0C0C0C", fg="#1EF113")
+user_entry.configure(insertbackground="#1EF113")
+user_entry.bind("<Return>", lambda event: send_button.invoke())
 
-send_button = tk.Button(root, text="Send", command=send_message)
+send_button = tk.Button(root, text="Ask ZeeBot", command=send_message)
 send_button.pack(pady=5)
+send_button.configure(font=(custom_font1), relief="raised", padx=10, pady=5)
+send_button.configure(bg="#C6C6C6", fg="#0C0C0C", activebackground="#1EF113")
 
 root.mainloop()

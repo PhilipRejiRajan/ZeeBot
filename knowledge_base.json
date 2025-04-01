@@ -11,6 +11,10 @@
     {
       "question": "greetings",
       "answer": "Greetings! I am ZeeBot, a simple chabot assistant. How may I assist you today?"
+    },
+    {
+      "question": "hi",
+      "answer": "Hi! I am ZeeBot, a simple chabot assistant. How may I assist you today?"
     }
   ]
 }
