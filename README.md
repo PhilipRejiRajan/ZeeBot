@@ -28,3 +28,5 @@ D:\ZeeBot> python main.py
 > Fork this repository to add new responses and customize the GUI. This project was built on a whim but I learnt much in the process. I plan on building better and more smarter bots in the future. Thank you for checking out this repo! ☺️
 
 # Screenshots
+
+![ZeeBot SS1](https://github.com/user-attachments/assets/ff185e85-4431-422e-a07c-bf99e732e990)
